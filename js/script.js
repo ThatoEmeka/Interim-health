@@ -143,11 +143,61 @@ function handleJoinSubmit(event) {
         popia.parentElement.parentElement.classList.add('border-red-400');
         return;
     }
+
+    // Collect all form data from all 3 steps
+    const formData = new FormData();
+    formData.append('First Name', document.getElementById('firstName').value);
+    formData.append('Last Name', document.getElementById('lastName').value);
+    formData.append('ID / Passport', document.getElementById('idNumber').value);
+    formData.append('Email', document.getElementById('email').value);
+    formData.append('Phone', document.getElementById('phone').value);
+    formData.append('Address', document.getElementById('address').value);
+    formData.append('Date of Birth', document.getElementById('dob').value || 'Not provided');
+    formData.append('Qualification', document.getElementById('qualification').value);
+    formData.append('SANC Number', document.getElementById('sancNumber').value);
+    formData.append('Experience', document.getElementById('experience').value);
     
-    // Hide form, show success
-    document.getElementById('joinForm').classList.add('hidden');
-    document.getElementById('joinSuccess').classList.remove('hidden');
-    document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const practicing = document.querySelector('input[name="practicing"]:checked');
+    formData.append('Currently Practicing', practicing ? practicing.value : 'Not specified');
+    
+    formData.append('Availability', document.getElementById('availability').value);
+    formData.append('POPIA Consent', popia.checked ? 'Yes' : 'No');
+    formData.append('_subject', 'New Nurse Registration - Interim Health');
+
+    // Disable the submit button to prevent double submission
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+    }
+
+    // Send to Formspree
+    fetch('https://formspree.io/f/mykrdepn', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+        if (response.ok) {
+            // Hide form, show success
+            document.getElementById('joinForm').classList.add('hidden');
+            document.getElementById('joinSuccess').classList.remove('hidden');
+            document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            alert('Something went wrong. Please email your details to help@interimhealth.co.za or try again.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            }
+        }
+    })
+    .catch(function(error) {
+        alert('Something went wrong. Please email your details to help@interimhealth.co.za or try again.');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Application';
+        }
+    });
 }
 
 function resetJoinForm() {

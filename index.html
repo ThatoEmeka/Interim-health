@@ -73,7 +73,7 @@
             "@type": "ContactPoint",
             "telephone": "+27-69-471-4292",
             "contactType": "sales",
-            "email": "info@interimhealth.co.za",
+            "email": "help@interimhealth.co.za",
             "availableLanguage": ["English", "Afrikaans", "Zulu"]
         },
         "sameAs": [
@@ -855,7 +855,7 @@
                             </div>
                             <div class="ml-5 mt-1">
                                 <h4 class="text-brandText font-bold text-lg group-hover:text-brandGreen transition-colors">Email Address</h4>
-                                <p class="text-gray-500 mt-1">info@interimhealth.co.za</p>
+                                <p class="text-gray-500 mt-1">help@interimhealth.co.za</p>
                             </div>
                         </div>
                     </div>
@@ -873,7 +873,7 @@
 
                 <!-- Contact Form -->
                 <div class="bg-white p-8 lg:p-10 rounded-lg shadow-xl border-t-4 border-brandGreen">
-                    <form onsubmit="event.preventDefault(); this.innerHTML = '<div class=\'flex flex-col items-center justify-center h-full min-h-[300px] text-center\'><div class=\'w-16 h-16 bg-brandGreen text-white rounded-full flex items-center justify-center mb-4\'><svg class=\'w-8 h-8\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M5 13l4 4L19 7\'></path></svg></div><h3 class=\'text-2xl font-bold text-brandPurple mb-2\'>Message Sent!</h3><p class=\'text-gray-600\'>Thank you for reaching out. A member of the Interim Health team will contact you shortly.</p></div>';">
+                    <form action="https://formspree.io/f/meeylazv" method="POST" onsubmit="event.preventDefault(); var f=this; var d=new FormData(f); fetch(f.action,{method:'POST',body:d,headers:{'Accept':'application/json'}}).then(function(r){if(r.ok){f.innerHTML='<div class=\'flex flex-col items-center justify-center h-full min-h-[300px] text-center\'><div class=\'w-16 h-16 bg-brandGreen text-white rounded-full flex items-center justify-center mb-4\'><svg class=\'w-8 h-8\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M5 13l4 4L19 7\'></path></svg></div><h3 class=\'text-2xl font-bold text-brandPurple mb-2\'>Message Sent!</h3><p class=\'text-gray-600\'>Thank you for reaching out. A member of the Interim Health team will contact you shortly.</p></div>'}}).catch(function(e){alert('Something went wrong. Please email us directly at help@interimhealth.co.za');});">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
@@ -1037,7 +1037,7 @@
                 <ul class="space-y-2 text-sm">
                     <li><a href="https://maps.google.com/?q=264+Oak+Avenue,+Johannesburg" target="_blank" class="hover:text-brandGreen transition-colors">Glen Austin, Midrand, Johannesburg</a></li>
                     <li>+27(0)69 471 4292</li>
-                    <li>info@interimhealth.co.za</li>
+                    <li>help@interimhealth.co.za</li>
                 </ul>
                 <div class="mt-4 border-t border-gray-700 pt-4">
                     <h5 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Regulatory Bodies</h5>
