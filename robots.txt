@@ -1,0 +1,7 @@
+# robots.txt for Interim Health
+# https://interimhealth.co.za/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://interimhealth.co.za/sitemap.xml

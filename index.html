@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- === PRIMARY META === -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interim Health | Healthcare Staffing</title>
-    
-    <!-- Import Montserrat Font to match the Interim Consulting design language -->
+    <title>Interim Health | Healthcare Staffing & Nursing Recruitment South Africa</title>
+    <meta name="description" content="Interim Health connects healthcare facilities with qualified nurses, caregivers, and medical staff across South Africa. SANC verified locum and permanent placements. Join our network today.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://interimhealth.co.za/">
+
+    <!-- === OPEN GRAPH (Facebook, LinkedIn) === -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://interimhealth.co.za/">
+    <meta property="og:title" content="Interim Health | Healthcare Staffing & Nursing Recruitment South Africa">
+    <meta property="og:description" content="Interim Health connects healthcare facilities with qualified nurses, caregivers, and medical staff. SANC verified. Locum & permanent placements nationwide.">
+    <meta property="og:image" content="https://interimhealth.co.za/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- === TWITTER CARDS === -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interim Health | Healthcare Staffing & Nursing Recruitment South Africa">
+    <meta name="twitter:description" content="Connecting healthcare facilities with qualified nurses, caregivers, and medical staff across South Africa. SANC verified.">
+
+    <!-- === FONTS === -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Load Tailwind CSS -->
+    <!-- === TAILWIND CSS === -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -19,8 +37,8 @@
                         sans: ['Montserrat', 'sans-serif'],
                     },
                     colors: {
-                        brandPurple: '#4d447a', /* Exact purple from top bar */
-                        brandGreen: '#50b848',  /* Exact bright green from top bar/accents */
+                        brandPurple: '#4d447a',
+                        brandGreen: '#50b848',
                         brandText: '#333333',
                         brandGray: '#f8f9fa'
                     }
@@ -28,27 +46,60 @@
             }
         }
     </script>
-    <style>
-        body { font-family: 'Montserrat', sans-serif; }
-        
-        /* Custom clip-path for the slanted top bar effect */
-        .slant-right {
-            clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0% 100%);
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- === STRUCTURED DATA (JSON-LD) === -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Interim Health",
+        "url": "https://interimhealth.co.za",
+        "description": "Healthcare staffing and recruitment agency connecting medical professionals with healthcare facilities across South Africa.",
+        "foundingDate": "2005",
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "Interim Consulting",
+            "url": "https://interimconsulting.co.za"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Glen Austin, Midrand",
+            "addressLocality": "Johannesburg",
+            "addressRegion": "Gauteng",
+            "addressCountry": "ZA"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+27-69-471-4292",
+            "contactType": "sales",
+            "email": "info@interimhealth.co.za",
+            "availableLanguage": ["English", "Afrikaans", "Zulu"]
+        },
+        "sameAs": [
+            "https://linkedin.com/company/interim-consulting",
+            "https://interimconsulting.co.za"
+        ],
+        "areaServed": {
+            "@type": "Country",
+            "name": "South Africa"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Healthcare Staffing Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Locum Nurse Placement" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Permanent Medical Staff Recruitment" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Caregiver Placement" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Allied Health Professional Staffing" } }
+            ]
         }
-        @media (max-width: 768px) {
-            .slant-right {
-                clip-path: none; /* Disable slant on mobile for better stacking */
-            }
-        }
-        
-        /* Hero background overlay */
-        .hero-overlay {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-        }
-    </style>
+    }
+    </script>
 </head>
 <body id="home" class="text-brandText bg-white antialiased">
 
+    <!-- ===== TOP BAR ===== -->
     <div class="bg-brandGreen w-full relative z-50">
         <div class="flex flex-col md:flex-row w-full max-w-[1600px] mx-auto text-sm text-white">
             
@@ -78,13 +129,13 @@
         </div>
     </div>
 
+    <!-- ===== NAVIGATION ===== -->
     <nav class="bg-white sticky top-0 z-40 shadow-sm border-b border-gray-100">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12">
             <div class="flex justify-between h-24">
                 
                 <!-- Logo Area -->
                 <div class="flex items-center py-4 cursor-pointer">
-                    <!-- Wireframe Globe Icon Approximation -->
                     <svg class="w-12 h-12 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10" stroke-width="1"></circle>
                         <ellipse cx="12" cy="12" rx="4" ry="10" stroke-width="1"></ellipse>
@@ -113,6 +164,13 @@
                     </div>
                     
                     <a href="#testimonials" class="text-[13px] font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide transition-colors">Testimonials</a>
+                    
+                    <!-- JOIN US Nav Link - highlighted -->
+                    <a href="#join-us" class="text-[13px] font-bold text-brandGreen hover:text-brandPurple uppercase tracking-wide transition-colors relative">
+                        Join Us
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-brandGreen rounded-full"></span>
+                    </a>
+                    
                     <a href="#contact" class="text-[13px] font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide transition-colors">Contact Us</a>
                     
                     <!-- Dropdown Item -->
@@ -125,6 +183,7 @@
                             <a href="https://linkedin.com/company/interim-consulting" target="_blank" class="block px-4 py-3 text-sm text-gray-700 hover:bg-brandGray hover:text-brandGreen border-b border-gray-50 transition-colors">LinkedIn</a>
                             <a href="https://interimconsulting.co.za/" target="_blank" class="block px-4 py-3 text-sm text-gray-700 hover:bg-brandGray hover:text-brandGreen border-b border-gray-50 transition-colors">Interim Consulting</a>
                             <a href="https://maps.google.com/?q=264+Oak+Avenue,+Johannesburg" target="_blank" class="block px-4 py-3 text-sm text-gray-700 hover:bg-brandGray hover:text-brandGreen transition-colors">Locate Us (Maps)</a>
+                            <a href="#join-us" class="block px-4 py-3 text-sm font-bold text-brandGreen hover:bg-brandGray hover:text-brandPurple border-t border-gray-50 transition-colors bg-green-50">Join Our Network</a>
                         </div>
                     </div>
                     
@@ -136,18 +195,33 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="flex items-center lg:hidden">
-                    <button type="button" class="text-gray-500 hover:text-brandPurple focus:outline-none">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button type="button" id="mobileMenuBtn" class="text-gray-500 hover:text-brandPurple focus:outline-none" onclick="toggleMobileMenu()">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menuIcon">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-lg">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-sm font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide" onclick="toggleMobileMenu()">Home</a>
+                <a href="#about" class="block py-2 text-sm font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide" onclick="toggleMobileMenu()">About Us</a>
+                <a href="#services" class="block py-2 text-sm font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide" onclick="toggleMobileMenu()">Services</a>
+                <a href="#testimonials" class="block py-2 text-sm font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide" onclick="toggleMobileMenu()">Testimonials</a>
+                <a href="#join-us" class="block py-2 text-sm font-bold text-brandGreen hover:text-brandPurple uppercase tracking-wide border-l-4 border-brandGreen pl-3" onclick="toggleMobileMenu()">Join Us</a>
+                <a href="#contact" class="block py-2 text-sm font-medium text-gray-800 hover:text-brandGreen uppercase tracking-wide" onclick="toggleMobileMenu()">Contact Us</a>
+                <hr class="border-gray-100">
+                <a href="https://linkedin.com/company/interim-consulting" target="_blank" class="block py-2 text-sm text-gray-600 hover:text-brandGreen">LinkedIn</a>
+                <a href="https://interimconsulting.co.za/" target="_blank" class="block py-2 text-sm text-gray-600 hover:text-brandGreen">Interim Consulting</a>
+            </div>
+        </div>
     </nav>
 
+    <!-- ===== HERO SECTION ===== -->
     <header class="hero-overlay relative h-[600px] flex items-center justify-center text-center">
-        <!-- Floating Green line accent -->
         <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1.5 bg-brandGreen"></div>
         
         <div class="max-w-4xl mx-auto px-4 z-10 flex flex-col items-center">
@@ -160,37 +234,45 @@
                 South African Healthcare <br> Recruitment
             </h1>
             
-            <a href="#contact" class="inline-block px-10 py-4 bg-brandGreen text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brandPurple transition-colors duration-300 shadow-lg">
-                Contact Us
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#contact" class="inline-block px-10 py-4 bg-brandGreen text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-brandPurple transition-colors duration-300 shadow-lg">
+                    Contact Us
+                </a>
+                <a href="#join-us" class="inline-block px-10 py-4 bg-transparent text-white text-sm font-bold uppercase tracking-wider rounded-full border-2 border-white hover:bg-white hover:text-brandPurple transition-colors duration-300 shadow-lg cta-pulse">
+                    Join Our Network
+                    <span class="block text-[10px] font-normal uppercase tracking-wider text-brandGreen">Nurses & Caregivers</span>
+                </a>
+            </div>
         </div>
     </header>
 
+    <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-brandPurple mb-4">About Interim Health</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brandPurple mb-4">About Interim Health — Trusted Healthcare Recruitment in South Africa</h2>
                     <div class="w-16 h-1 bg-brandGreen mb-6"></div>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        As a dedicated subsidiary of Interim Consulting, Interim Health brings over two decades of corporate governance, recruitment excellence, and strategic management directly to the South African healthcare sector.
+                        As a dedicated subsidiary of <a href="https://interimconsulting.co.za/" target="_blank" class="text-brandGreen font-bold hover:underline">Interim Consulting</a>, Interim Health brings over two decades of corporate governance, recruitment excellence, and strategic management directly to the South African healthcare sector. We are a leading <strong>healthcare staffing agency</strong> specializing in <strong>nursing recruitment</strong> and <strong>medical placement services</strong> nationwide.
                     </p>
                     <p class="text-gray-600 mb-8 leading-relaxed">
-                        Our mission is to bridge the critical gap in healthcare staffing by providing highly qualified, thoroughly vetted medical professionals. Whether your facility requires emergency locum nurses, dedicated caregivers, or permanent specialized medical staff, we deliver operational continuity with uncompromised quality and compliance.
+                        Our mission is to bridge the critical gap in healthcare staffing by providing highly qualified, thoroughly vetted medical professionals. Whether your facility requires emergency <strong>locum nurses</strong>, dedicated <strong>caregivers</strong>, or permanent specialized medical staff, we deliver operational continuity with uncompromised quality and compliance. We serve <strong>hospitals, clinics, and healthcare facilities</strong> across Johannesburg, Gauteng, and all of South Africa.
                     </p>
-                    <a href="#contact" class="text-brandPurple font-bold hover:text-brandGreen transition-colors flex items-center group">
-                        Partner with us today
+                    <a href="#join-us" class="text-brandGreen font-bold hover:text-brandPurple transition-colors flex items-center group">
+                        Registered Nurses & Caregivers — Join our network today
                         <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>
                 </div>
                 <div class="relative">
                     <div class="absolute inset-0 bg-brandGreen rounded-lg transform translate-x-4 translate-y-4 opacity-20"></div>
-                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Healthcare Professionals" class="relative z-10 rounded-lg shadow-xl w-full object-cover h-[450px]">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Qualified nurses and healthcare professionals working with a South African medical recruitment agency" class="relative z-10 rounded-lg shadow-xl w-full object-cover h-[450px]">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== SERVICES SECTION ===== -->
     <section id="services" class="py-24 bg-brandGray">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -236,9 +318,23 @@
                     <p class="text-gray-600 text-sm leading-relaxed">Comprehensive staffing for allied health professionals, radiographers, and specialized medical technicians.</p>
                 </div>
             </div>
+            
+            <!-- Mid-page CTA Banner -->
+            <div class="mt-16 text-center bg-white border-l-4 border-brandGreen p-8 md:p-10 rounded-lg shadow-md max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="text-left">
+                        <h3 class="text-2xl font-bold text-brandPurple mb-2">Are You a Healthcare Professional?</h3>
+                        <p class="text-gray-600">Join Interim Health's network and access premium placement opportunities across South Africa.</p>
+                    </div>
+                    <a href="#join-us" class="flex-shrink-0 px-8 py-3 bg-brandGreen text-white font-bold rounded-full hover:bg-brandPurple transition-colors shadow-md whitespace-nowrap">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ===== TESTIMONIALS SECTION ===== -->
     <section id="testimonials" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -288,6 +384,7 @@
         </div>
     </section>
 
+    <!-- ===== COMPLIANCE SECTION ===== -->
     <section id="compliance" class="py-24 bg-brandPurple text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -344,6 +441,381 @@
         </div>
     </section>
 
+    <!-- ===== "JOIN US" SECTION — Multi-Step Nurse Registration ===== -->
+    <section id="join-us" class="py-24 join-overlay relative">
+        <!-- Subtle overlay -->
+        <div class="absolute inset-0 bg-white/85"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold text-brandPurple mb-4">Join Our Network</h2>
+                <div class="w-16 h-1 bg-brandGreen mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg">Take the next step in your healthcare career. Register with Interim Health and gain access to premium nursing and caregiving opportunities across South Africa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
+                
+                <!-- LEFT: Benefits/Info Column -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-brandGreen">
+                        <h3 class="text-xl font-bold text-brandPurple mb-6">Why Join Interim Health?</h3>
+                        <ul class="space-y-5">
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-brandGreen text-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-brandText">Flexible Scheduling</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Choose shifts that fit your life — locum, part-time, or full-time.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-brandGreen text-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-brandText">Competitive Compensation</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Market-related pay rates with timely and transparent payments.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-brandGreen text-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-brandText">Premium Placements</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Access top-tier hospitals, clinics, and healthcare facilities nationwide.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-brandGreen text-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-brandText">Compliance Support</h4>
+                                    <p class="text-sm text-gray-500 mt-1">We handle SANC verification, POPIA compliance, and all credentialing.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Testimonial Mini -->
+                    <div class="bg-brandPurple text-white p-8 rounded-lg shadow-md">
+                        <svg class="w-8 h-8 text-brandGreen mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                        <p class="italic text-gray-200 mb-4 leading-relaxed">"Interim Health connected me with a fantastic placement within days. The process was smooth, professional, and completely transparent."</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-brandGreen text-white rounded-full flex items-center justify-center font-bold mr-3">PN</div>
+                            <div>
+                                <p class="font-bold text-sm">Precious N.</p>
+                                <p class="text-xs text-gray-400">Registered Nurse, SANC Registered</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-5 rounded-lg shadow-md text-center">
+                            <span class="block text-3xl font-extrabold text-brandGreen">500+</span>
+                            <span class="text-sm text-gray-500">Nurses Placed</span>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-md text-center">
+                            <span class="block text-3xl font-extrabold text-brandGreen">98%</span>
+                            <span class="text-sm text-gray-500">Placement Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Registration Form -->
+                <div class="lg:col-span-3">
+                    <div class="bg-white p-8 lg:p-10 rounded-lg shadow-xl border-t-4 border-brandGreen">
+                        
+                        <!-- Step Indicator -->
+                        <div class="flex items-center justify-center mb-10 space-x-2 md:space-x-4">
+                            <div class="flex items-center">
+                                <div id="stepDot1" class="step-dot w-10 h-10 rounded-full bg-brandGreen text-white flex items-center justify-center text-sm font-bold">1</div>
+                                <span class="hidden sm:inline ml-2 text-xs font-medium text-gray-600">Personal</span>
+                            </div>
+                            <div class="w-10 md:w-16 h-0.5 bg-gray-200 step-indicator" id="stepLine1"></div>
+                            <div class="flex items-center">
+                                <div id="stepDot2" class="step-dot w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center text-sm font-bold">2</div>
+                                <span class="hidden sm:inline ml-2 text-xs font-medium text-gray-400">Professional</span>
+                            </div>
+                            <div class="w-10 md:w-16 h-0.5 bg-gray-200 step-indicator" id="stepLine2"></div>
+                            <div class="flex items-center">
+                                <div id="stepDot3" class="step-dot w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center text-sm font-bold">3</div>
+                                <span class="hidden sm:inline ml-2 text-xs font-medium text-gray-400">Submit</span>
+                            </div>
+                        </div>
+                        
+                        <form id="joinForm" onsubmit="handleJoinSubmit(event)">
+                            
+                            <!-- ===== STEP 1: Personal Information ===== -->
+                            <div id="formStep1" class="form-step active">
+                                <h3 class="text-xl font-bold text-brandPurple mb-6">Personal Information</h3>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">First Name <span class="text-red-500">*</span></label>
+                                        <input type="text" id="firstName" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name <span class="text-red-500">*</span></label>
+                                        <input type="text" id="lastName" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">ID / Passport Number <span class="text-red-500">*</span></label>
+                                    <input type="text" id="idNumber" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
+                                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number <span class="text-red-500">*</span></label>
+                                        <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required placeholder="+27 XX XXX XXXX">
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Physical Address <span class="text-red-500">*</span></label>
+                                    <textarea id="address" rows="2" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required placeholder="Street address, city, province, postal code"></textarea>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
+                                    <input type="date" id="dob" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow">
+                                </div>
+
+                                <div class="flex justify-end mt-8">
+                                    <button type="button" onclick="nextStep(1)" class="px-8 py-3 bg-brandGreen text-white font-bold rounded-md hover:bg-brandPurple transition-colors shadow-md flex items-center">
+                                        Next — Professional Info
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ===== STEP 2: Professional Information ===== -->
+                            <div id="formStep2" class="form-step">
+                                <h3 class="text-xl font-bold text-brandPurple mb-6">Professional Information</h3>
+                                
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Professional Qualification <span class="text-red-500">*</span></label>
+                                    <select id="qualification" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none text-gray-600 bg-white transition-shadow" required>
+                                        <option value="">Select your qualification...</option>
+                                        <option>Registered Nurse (Diploma)</option>
+                                        <option>Registered Nurse (Degree)</option>
+                                        <option>Enrolled Nurse</option>
+                                        <option>Enrolled Nursing Auxiliary</option>
+                                        <option>Critical Care Nurse</option>
+                                        <option>Midwife</option>
+                                        <option>Psychiatric Nurse</option>
+                                        <option>Community Health Nurse</option>
+                                        <option>Nursing Manager / Matron</option>
+                                        <option>Caregiver / Home Carer</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">SANC Number <span class="text-red-500">*</span></label>
+                                    <input type="text" id="sancNumber" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none transition-shadow" required placeholder="e.g. SANC 123456">
+                                    <p class="text-xs text-gray-400 mt-1.5">Your South African Nursing Council registration number. We will verify this against the SANC database.</p>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Years of Experience <span class="text-red-500">*</span></label>
+                                        <select id="experience" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none text-gray-600 bg-white transition-shadow" required>
+                                            <option value="">Select...</option>
+                                            <option>Less than 1 year</option>
+                                            <option>1 - 2 years</option>
+                                            <option>3 - 5 years</option>
+                                            <option>6 - 10 years</option>
+                                            <option>11 - 15 years</option>
+                                            <option>15+ years</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Currently Practicing? <span class="text-red-500">*</span></label>
+                                        <div class="flex space-x-6 mt-2">
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="radio" name="practicing" value="Yes" class="w-4 h-4 text-brandGreen focus:ring-brandGreen" required>
+                                                <span class="ml-2 text-gray-700">Yes</span>
+                                            </label>
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="radio" name="practicing" value="No" class="w-4 h-4 text-brandGreen focus:ring-brandGreen">
+                                                <span class="ml-2 text-gray-700">No</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-3">Specializations / Skills (select all that apply)</label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">General Nursing</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Critical Care / ICU</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Paediatrics</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Maternity / Midwifery</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Mental Health / Psychiatry</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Geriatric / Elderly Care</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Theatre / Surgical</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Primary Health Care</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between mt-8">
+                                    <button type="button" onclick="prevStep(2)" class="px-6 py-3 border border-gray-300 text-gray-600 font-bold rounded-md hover:bg-gray-50 transition-colors flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
+                                        Back
+                                    </button>
+                                    <button type="button" onclick="nextStep(2)" class="px-8 py-3 bg-brandGreen text-white font-bold rounded-md hover:bg-brandPurple transition-colors shadow-md flex items-center">
+                                        Next — Documents & Submit
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ===== STEP 3: Documents & Submit ===== -->
+                            <div id="formStep3" class="form-step">
+                                <h3 class="text-xl font-bold text-brandPurple mb-6">Documents & Finalize</h3>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Work Type <span class="text-red-500">*</span></label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" id="workLocum" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Locum / Temporary</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" id="workPermanent" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Permanent</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen hover:bg-green-50 cursor-pointer transition-all">
+                                            <input type="checkbox" id="workBoth" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">Both</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Availability <span class="text-red-500">*</span></label>
+                                    <select id="availability" class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-brandGreen focus:border-brandGreen focus:outline-none text-gray-600 bg-white transition-shadow" required>
+                                        <option value="">Select your availability...</option>
+                                        <option>Immediately</option>
+                                        <option>Within 1 week</option>
+                                        <option>Within 2 weeks</option>
+                                        <option>Within 1 month</option>
+                                        <option>Not currently available, exploring options</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Upload CV / Resume <span class="text-red-500">*</span></label>
+                                    <div class="file-upload-area p-6 rounded-lg text-center cursor-pointer" onclick="document.getElementById('cvUpload').click()">
+                                        <input type="file" id="cvUpload" class="hidden" accept=".pdf,.doc,.docx" onchange="handleFileUpload(event)">
+                                        <svg class="w-10 h-10 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                        <p class="text-sm text-gray-500 mb-1"><span class="font-semibold text-brandGreen">Click to upload</span> or drag and drop</p>
+                                        <p class="text-xs text-gray-400">PDF, DOC or DOCX (Max 5MB)</p>
+                                        <p id="fileName" class="text-xs text-brandGreen font-medium mt-2 hidden"></p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-3">Additional Documents (Optional)</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen cursor-pointer transition-all">
+                                            <input type="checkbox" id="docSanc" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">I have my SANC certificate ready to provide</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen cursor-pointer transition-all">
+                                            <input type="checkbox" id="docId" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">I have my ID/passport copy ready to provide</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-md hover:border-brandGreen cursor-pointer transition-all">
+                                            <input type="checkbox" id="docQual" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded">
+                                            <span class="ml-3 text-sm text-gray-700">I have my qualification certificates ready</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-6 p-4 bg-brandGray rounded-lg border border-gray-100">
+                                    <label class="flex items-start cursor-pointer">
+                                        <input type="checkbox" id="popiaConsent" class="w-4 h-4 text-brandGreen focus:ring-brandGreen rounded mt-1" required>
+                                        <span class="ml-3 text-sm text-gray-600 leading-relaxed">
+                                            I consent to Interim Health collecting, processing, and storing my personal information in accordance with POPIA (Protection of Personal Information Act). I understand my data will be used solely for recruitment and placement purposes. <span class="text-red-500">*</span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div class="flex justify-between mt-8">
+                                    <button type="button" onclick="prevStep(3)" class="px-6 py-3 border border-gray-300 text-gray-600 font-bold rounded-md hover:bg-gray-50 transition-colors flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
+                                        Back
+                                    </button>
+                                    <button type="submit" class="px-10 py-3 bg-brandGreen text-white font-bold rounded-md hover:bg-brandPurple transition-colors shadow-md flex items-center">
+                                        Submit Application
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Success Message (hidden initially) -->
+                        <div id="joinSuccess" class="hidden text-center py-10">
+                            <div class="success-icon w-20 h-20 bg-brandGreen text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brandPurple mb-3">Application Submitted!</h3>
+                            <p class="text-gray-600 max-w-md mx-auto mb-8 leading-relaxed">
+                                Thank you for registering with Interim Health. Our recruitment team will review your details and contact you within 2–3 business days.
+                            </p>
+                            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                                <button onclick="resetJoinForm()" class="px-8 py-3 bg-brandPurple text-white font-bold rounded-md hover:bg-brandGreen transition-colors shadow-md">
+                                    Submit Another Application
+                                </button>
+                                <a href="#home" class="px-8 py-3 border border-gray-300 text-gray-600 font-bold rounded-md hover:bg-gray-50 transition-colors">
+                                    Back to Home
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
     <section id="contact" class="py-24 bg-brandGray">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -387,6 +859,16 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- CTA in contact section -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brandGreen">
+                        <p class="text-gray-600 text-sm">
+                            <span class="font-bold text-brandPurple">Healthcare professionals:</span> 
+                            Looking for your next opportunity? 
+                            <a href="#join-us" class="text-brandGreen font-bold hover:underline">Join our network</a> 
+                            and we'll connect you with top-tier placements.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Contact Form -->
@@ -427,8 +909,78 @@
         </div>
     </section>
 
+    <!-- ===== FLOATING STICKY CTA BANNER (Bottom of screen on scroll) ===== -->
+    <div id="floatingCta" class="floating-cta hidden-banner fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-brandGreen shadow-2xl px-4 py-3 md:py-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-brandGreen rounded-full flex items-center justify-center text-white flex-shrink-0 mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </div>
+                <div class="hidden sm:block">
+                    <p class="text-sm font-bold text-brandPurple">Healthcare Professionals Wanted!</p>
+                    <p class="text-xs text-gray-500">Join Interim Health's network — flexible shifts, great rates.</p>
+                </div>
+                <p class="sm:hidden text-sm font-bold text-brandPurple ml-2">Join Interim Health Today!</p>
+            </div>
+            <a href="#join-us" class="px-6 py-2.5 bg-brandGreen text-white text-sm font-bold rounded-full hover:bg-brandPurple transition-colors shadow-md whitespace-nowrap flex-shrink-0" onclick="document.getElementById('floatingCta').classList.add('hidden-banner')">
+                Register Now
+                <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+            <button onclick="document.getElementById('floatingCta').classList.add('hidden-banner')" class="absolute top-[-10px] right-2 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 shadow-sm text-xs">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== RESOURCES / BLOG SECTION ===== -->
+    <section id="resources" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brandPurple mb-4">Healthcare Resources & Guides</h2>
+                <div class="w-16 h-1 bg-brandGreen mx-auto mb-6"></div>
+                <p class="text-gray-600">Expert resources for healthcare professionals and facilities navigating nursing recruitment and compliance in South Africa.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Resource 1 -->
+                <div class="bg-brandGray p-8 rounded-lg hover:shadow-md transition-shadow border-b-4 border-brandGreen">
+                    <div class="w-12 h-12 bg-brandGreen text-white rounded-full flex items-center justify-center mb-5 text-lg font-bold">1</div>
+                    <h3 class="text-lg font-bold text-brandPurple mb-3">How to Verify Your SANC Registration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Every nurse placed through Interim Health undergoes mandatory SANC verification. Learn what to expect and how to prepare your documents.</p>
+                    <a href="https://www.sanc.co.za/verify-registration/" target="_blank" class="text-brandGreen text-sm font-bold hover:underline flex items-center group">
+                        Verify with SANC
+                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                
+                <!-- Resource 2 -->
+                <div class="bg-brandGray p-8 rounded-lg hover:shadow-md transition-shadow border-b-4 border-brandGreen">
+                    <div class="w-12 h-12 bg-brandGreen text-white rounded-full flex items-center justify-center mb-5 text-lg font-bold">2</div>
+                    <h3 class="text-lg font-bold text-brandPurple mb-3">POPIA Compliance in Healthcare Recruitment</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Understanding how the Protection of Personal Information Act affects your job search and how Interim Health keeps your data secure.</p>
+                    <a href="https://popia.co.za/" target="_blank" class="text-brandGreen text-sm font-bold hover:underline flex items-center group">
+                        Learn about POPIA
+                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Resource 3 -->
+                <div class="bg-brandGray p-8 rounded-lg hover:shadow-md transition-shadow border-b-4 border-brandGreen">
+                    <div class="w-12 h-12 bg-brandGreen text-white rounded-full flex items-center justify-center mb-5 text-lg font-bold">3</div>
+                    <h3 class="text-lg font-bold text-brandPurple mb-3">Top Benefits of Locum Nursing in South Africa</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Discover why more registered nurses are choosing locum work for better flexibility, competitive pay, and diverse clinical experiences.</p>
+                    <a href="#join-us" class="text-brandGreen text-sm font-bold hover:underline flex items-center group">
+                        Start your locum journey
+                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-[#2A2445] text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <!-- Footer Logo Replicated -->
                 <div class="flex items-center mb-6">
@@ -445,7 +997,15 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-sm leading-relaxed mb-4">A subsidiary of Interim Consulting. Bridging the gap in healthcare staffing across South Africa with integrity and efficiency.</p>
+                <p class="text-sm leading-relaxed mb-4">A subsidiary of <a href="https://interimconsulting.co.za/" target="_blank" class="text-brandGreen hover:underline">Interim Consulting</a>. Bridging the gap in healthcare staffing across South Africa with integrity and efficiency.</p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="https://linkedin.com/company/interim-consulting" target="_blank" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-brandGreen transition-colors" aria-label="LinkedIn">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://interimconsulting.co.za/" target="_blank" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-brandGreen transition-colors" aria-label="Interim Consulting Website">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </a>
+                </div>
             </div>
             
             <div>
@@ -455,23 +1015,47 @@
                     <li><a href="#about" class="hover:text-brandGreen transition-colors">About Us</a></li>
                     <li><a href="#services" class="hover:text-brandGreen transition-colors">Services</a></li>
                     <li><a href="#compliance" class="hover:text-brandGreen transition-colors">Compliance</a></li>
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors font-bold text-brandGreen">Join Us</a></li>
+                    <li><a href="#resources" class="hover:text-brandGreen transition-colors">Resources</a></li>
                     <li><a href="https://linkedin.com/company/interim-consulting" target="_blank" class="hover:text-brandGreen transition-colors">LinkedIn</a></li>
                     <li><a href="https://interimconsulting.co.za/" target="_blank" class="hover:text-brandGreen transition-colors">Interim Consulting</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Contact</h4>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">For Professionals</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors">Register as a Nurse</a></li>
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors">Register as a Caregiver</a></li>
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors">Nursing Jobs South Africa</a></li>
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors">Locum Nurse Opportunities</a></li>
+                    <li><a href="#join-us" class="hover:text-brandGreen transition-colors">Permanent Placement</a></li>
+                    <li><a href="#contact" class="hover:text-brandGreen transition-colors">Submit Your CV</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Contact & Resources</h4>
                 <ul class="space-y-2 text-sm">
                     <li><a href="https://maps.google.com/?q=264+Oak+Avenue,+Johannesburg" target="_blank" class="hover:text-brandGreen transition-colors">Glen Austin, Midrand, Johannesburg</a></li>
                     <li>+27(0)69 471 4292</li>
                     <li>info@interimhealth.co.za</li>
                 </ul>
+                <div class="mt-4 border-t border-gray-700 pt-4">
+                    <h5 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Regulatory Bodies</h5>
+                    <ul class="space-y-1.5 text-xs">
+                        <li><a href="https://www.sanc.co.za/" target="_blank" class="hover:text-brandGreen transition-colors">SANC — South African Nursing Council</a></li>
+                        <li><a href="https://www.hpcsa.co.za/" target="_blank" class="hover:text-brandGreen transition-colors">HPCSA — Health Professions Council</a></li>
+                        <li><a href="https://popia.co.za/" target="_blank" class="hover:text-brandGreen transition-colors">POPIA — Data Protection</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-700 text-sm text-center">
-            <p>&copy; 2026 Interim Health (Pty) Ltd. All rights reserved.</p>
+            <p>&copy; 2026 Interim Health (Pty) Ltd. All rights reserved. A subsidiary of <a href="https://interimconsulting.co.za/" target="_blank" class="text-brandGreen hover:underline">Interim Consulting</a>.</p>
         </div>
     </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="js/script.js"></script>
 
 </body>
 </html>
