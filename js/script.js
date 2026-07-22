@@ -99,10 +99,16 @@ function prevStep(current) {
     }
 }
 
-// ---- File Upload Handler ----
+// ---- Google Apps Script URL ----
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrWFg6LUd2qphDqgdNP4dqH8QWRuMX3ak_g7nILF0idzhxBGg1DXz0qiCvYCq8Q7W3lA/exec';
+
+// ---- File Upload Handler (stores file reference for later submission) ----
+let uploadedFile = null;
+
 function handleFileUpload(event) {
     const file = event.target.files[0];
     if (file) {
+        uploadedFile = file;
         const nameEl = document.getElementById('fileName');
         nameEl.textContent = '✅ ' + file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
         nameEl.classList.remove('hidden');
@@ -133,6 +139,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ---- Read file as base64 ----
+function readFileAsBase64(file) {
+    return new Promise(function(resolve, reject) {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            // Remove the data:application/pdf;base64, prefix
+            const base64 = reader.result.split(',')[1];
+            resolve(base64);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
 // ---- Form Submit Handler ----
 function handleJoinSubmit(event) {
     event.preventDefault();
@@ -144,60 +164,74 @@ function handleJoinSubmit(event) {
         return;
     }
 
-    // Collect all form data from all 3 steps
-    const formData = new FormData();
-    formData.append('First Name', document.getElementById('firstName').value);
-    formData.append('Last Name', document.getElementById('lastName').value);
-    formData.append('ID / Passport', document.getElementById('idNumber').value);
-    formData.append('Email', document.getElementById('email').value);
-    formData.append('Phone', document.getElementById('phone').value);
-    formData.append('Address', document.getElementById('address').value);
-    formData.append('Date of Birth', document.getElementById('dob').value || 'Not provided');
-    formData.append('Qualification', document.getElementById('qualification').value);
-    formData.append('SANC Number', document.getElementById('sancNumber').value);
-    formData.append('Experience', document.getElementById('experience').value);
-    
-    const practicing = document.querySelector('input[name="practicing"]:checked');
-    formData.append('Currently Practicing', practicing ? practicing.value : 'Not specified');
-    
-    formData.append('Availability', document.getElementById('availability').value);
-    formData.append('POPIA Consent', popia.checked ? 'Yes' : 'No');
-    formData.append('_subject', 'New Nurse Registration - Interim Health');
-
     // Disable the submit button to prevent double submission
-    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const submitBtn = event.target.querySelector('button[type=\"submit\"]');
     if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
     }
 
-    // Send to Formspree
-    fetch('https://formspree.io/f/mykrdepn', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(function(response) {
-        if (response.ok) {
-            // Hide form, show success
+    // Build the payload as a URL-encoded string (required by Google Apps Script POST)
+    const params = new URLSearchParams();
+    params.append('formType', 'nurse_registration');
+    params.append('firstName', document.getElementById('firstName').value);
+    params.append('lastName', document.getElementById('lastName').value);
+    params.append('idNumber', document.getElementById('idNumber').value);
+    params.append('email', document.getElementById('email').value);
+    params.append('phone', document.getElementById('phone').value);
+    params.append('address', document.getElementById('address').value);
+    params.append('dob', document.getElementById('dob').value || '');
+    params.append('qualification', document.getElementById('qualification').value);
+    params.append('sancNumber', document.getElementById('sancNumber').value);
+    params.append('experience', document.getElementById('experience').value);
+    
+    const practicing = document.querySelector('input[name=\"practicing\"]:checked');
+    params.append('practicing', practicing ? practicing.value : '');
+    
+    params.append('availability', document.getElementById('availability').value);
+    params.append('popiaConsent', popia.checked ? 'Yes' : 'No');
+
+    // Handle CV file upload if present
+    const cvFile = document.getElementById('cvUpload').files[0];
+    
+    function doSubmit(cvBase64, cvName) {
+        if (cvBase64) {
+            params.append('cvData', cvBase64);
+            params.append('cvName', cvName);
+        }
+
+        // Send to Google Apps Script
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+        })
+        .then(function() {
+            // With no-cors mode we can't read the response, so assume success
             document.getElementById('joinForm').classList.add('hidden');
             document.getElementById('joinSuccess').classList.remove('hidden');
             document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
+        })
+        .catch(function() {
             alert('Something went wrong. Please email your details to help@interimhealth.co.za or try again.');
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Application';
             }
-        }
-    })
-    .catch(function(error) {
-        alert('Something went wrong. Please email your details to help@interimhealth.co.za or try again.');
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Application';
-        }
-    });
+        });
+    }
+
+    if (cvFile) {
+        readFileAsBase64(cvFile).then(function(base64) {
+            doSubmit(base64, cvFile.name);
+        }).catch(function() {
+            // If file read fails, submit without CV
+            doSubmit(null, null);
+        });
+    } else {
+        doSubmit(null, null);
+    }
 }
 
 function resetJoinForm() {
