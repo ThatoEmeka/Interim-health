@@ -153,6 +153,63 @@ function readFileAsBase64(file) {
     });
 }
 
+// ---- Submit via hidden iframe (most reliable for Google Apps Script) ----
+function submitViaIframe(url, params, onSuccess, onError) {
+    // Create a unique iframe name
+    var iframeName = 'hidden_iframe_' + Date.now();
+    
+    // Create a hidden iframe
+    var iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+    // Create a hidden form that targets the iframe
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+    form.target = iframeName;
+    form.style.display = 'none';
+    
+    // Add all params as hidden inputs
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = params[key];
+            form.appendChild(input);
+        }
+    }
+    
+    document.body.appendChild(form);
+    
+    // Set a timeout to detect if submission worked
+    var timeout = setTimeout(function() {
+        // If iframe hasn't loaded in 10 seconds, assume it worked
+        // (Google Apps Script often doesn't trigger iframe onload)
+        cleanup();
+        if (onSuccess) onSuccess();
+    }, 10000);
+    
+    function cleanup() {
+        clearTimeout(timeout);
+        setTimeout(function() {
+            if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+            if (form.parentNode) form.parentNode.removeChild(form);
+        }, 1000);
+    }
+    
+    // Try to detect iframe load (may not fire with Google Apps Script)
+    iframe.onload = function() {
+        cleanup();
+        if (onSuccess) onSuccess();
+    };
+    
+    // Submit the form
+    form.submit();
+}
+
 // ---- Form Submit Handler ----
 function handleJoinSubmit(event) {
     event.preventDefault();
@@ -165,72 +222,60 @@ function handleJoinSubmit(event) {
     }
 
     // Disable the submit button to prevent double submission
-    const submitBtn = event.target.querySelector('button[type=\"submit\"]');
+    const submitBtn = event.target.querySelector('button[type="submit"]');
     if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
     }
 
-    // Build the payload as a URL-encoded string (required by Google Apps Script POST)
-    const params = new URLSearchParams();
-    params.append('formType', 'nurse_registration');
-    params.append('firstName', document.getElementById('firstName').value);
-    params.append('lastName', document.getElementById('lastName').value);
-    params.append('idNumber', document.getElementById('idNumber').value);
-    params.append('email', document.getElementById('email').value);
-    params.append('phone', document.getElementById('phone').value);
-    params.append('address', document.getElementById('address').value);
-    params.append('dob', document.getElementById('dob').value || '');
-    params.append('qualification', document.getElementById('qualification').value);
-    params.append('sancNumber', document.getElementById('sancNumber').value);
-    params.append('experience', document.getElementById('experience').value);
+    // Build the payload as a plain object
+    var params = {};
+    params.formType = 'nurse_registration';
+    params.firstName = document.getElementById('firstName').value;
+    params.lastName = document.getElementById('lastName').value;
+    params.idNumber = document.getElementById('idNumber').value;
+    params.email = document.getElementById('email').value;
+    params.phone = document.getElementById('phone').value;
+    params.address = document.getElementById('address').value;
+    params.dob = document.getElementById('dob').value || '';
+    params.qualification = document.getElementById('qualification').value;
+    params.sancNumber = document.getElementById('sancNumber').value;
+    params.experience = document.getElementById('experience').value;
     
-    const practicing = document.querySelector('input[name=\"practicing\"]:checked');
-    params.append('practicing', practicing ? practicing.value : '');
+    var practicing = document.querySelector('input[name="practicing"]:checked');
+    params.practicing = practicing ? practicing.value : '';
     
-    params.append('availability', document.getElementById('availability').value);
-    params.append('popiaConsent', popia.checked ? 'Yes' : 'No');
+    params.availability = document.getElementById('availability').value;
+    params.popiaConsent = popia.checked ? 'Yes' : 'No';
 
     // Handle CV file upload if present
     const cvFile = document.getElementById('cvUpload').files[0];
     
-    function doSubmit(cvBase64, cvName) {
-        if (cvBase64) {
-            params.append('cvData', cvBase64);
-            params.append('cvName', cvName);
-        }
-
-        // Send to Google Apps Script
-        fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString()
-        })
-        .then(function() {
-            // With no-cors mode we can't read the response, so assume success
-            document.getElementById('joinForm').classList.add('hidden');
-            document.getElementById('joinSuccess').classList.remove('hidden');
-            document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        })
-        .catch(function() {
-            alert('Something went wrong. Please email your details to help@interimhealth.co.za or try again.');
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Application';
+    function doSubmit() {
+        // Submit via hidden iframe (most reliable method)
+        submitViaIframe(
+            GOOGLE_SCRIPT_URL,
+            params,
+            function() {
+                // Success
+                document.getElementById('joinForm').classList.add('hidden');
+                document.getElementById('joinSuccess').classList.remove('hidden');
+                document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        });
+        );
     }
 
     if (cvFile) {
         readFileAsBase64(cvFile).then(function(base64) {
-            doSubmit(base64, cvFile.name);
+            params.cvData = base64;
+            params.cvName = cvFile.name;
+            doSubmit();
         }).catch(function() {
             // If file read fails, submit without CV
-            doSubmit(null, null);
+            doSubmit();
         });
     } else {
-        doSubmit(null, null);
+        doSubmit();
     }
 }
 
@@ -293,6 +338,34 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => observer.observe(el));
     staggerElements.forEach(el => observer.observe(el));
 });
+
+// ---- Contact Form Submit Handler ----
+function handleContactSubmit(form) {
+    var params = {};
+    params.formType = 'contact';
+    params.firstName = form.querySelector('[name="firstName"]').value;
+    params.lastName = form.querySelector('[name="lastName"]').value;
+    params.email = form.querySelector('[name="email"]').value;
+    params.inquiryType = form.querySelector('[name="inquiryType"]').value;
+    params.message = form.querySelector('[name="message"]').value;
+    
+    // Disable button
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+    }
+    
+    submitViaIframe(
+        GOOGLE_SCRIPT_URL,
+        params,
+        function() {
+            form.innerHTML = '<div class="flex flex-col items-center justify-center h-full min-h-[300px] text-center"><div class="w-16 h-16 bg-brandGreen text-white rounded-full flex items-center justify-center mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div><h3 class="text-2xl font-bold text-brandPurple mb-2">Message Sent!</h3><p class="text-gray-600">Thank you for reaching out. A member of the Interim Health team will contact you shortly.</p></div>';
+        }
+    );
+    
+    return false;
+}
 
 // ---- Initialize ----
 document.addEventListener('DOMContentLoaded', function() {
